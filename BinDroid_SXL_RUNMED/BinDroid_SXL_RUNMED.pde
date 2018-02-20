@@ -1,19 +1,30 @@
+import garciadelcastillo.dashedlines.*;
+
 PImage bgref;
 int BUTTON_HEIGHT;
 basicButton apply;
 PFont segoe;
+DashedLines dash;
 
 void setup() {
-    size(466, 40);
-    // pixelDensity(displayDensity());
+    size(998, 816);
+    pixelDensity(2);
     background(0);
-    bgref = loadImage("Screenshot_3.png");
-    apply = new basicButton(0, 0, 128, "Apply");
     BUTTON_HEIGHT = 40;
-    segoe = createFont("SegoeUI", 23);
+    
+    bgref = loadImage("Screenshot_10.png");
+    segoe = createFont("SegoeUI", 21);
+    dash = new DashedLines(this);
+    dash.pattern(10, 5);
 }
 
-abstract class button {
+abstract class UIScreen {}
+
+abstract class UIelem {}
+
+abstract class dropDown extends UIelem {}
+
+abstract class button extends UIelem {
     int x, y, w, h;
 }
 
@@ -91,10 +102,8 @@ class basicButton extends button {
 
 void draw() {
     image(bgref, 0, 0);
-    apply.render();
 }
 
 void mouseMoved() {
-    apply.isOver(mouseX, mouseY);
 
 }
